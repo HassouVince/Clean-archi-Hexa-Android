@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+apply from: "${rootProject.projectDir}/buildsystem/flavors.gradle"
+apply from: "${rootProject.projectDir}/buildsystem/android_commons.gradle"
+
+android {
+    defaultConfig {
+        applicationId "fr.systemathicdev.consoapp"
+    }
+
+    with flavorConfig
+}
+
+ext {
+    coreDependencies = [
+            activity        : "androidx.activity:activity-ktx:$activity_version",
+            appcompat        : "androidx.appcompat:appcompat:$appcompat_version",
+            constraintLayout        : "androidx.constraintlayout:constraintlayout:$constraintlayout_version",
+            core              : "androidx.core:core-ktx:$core_ktx_version",
+            coroutines        : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
+            dagger        : "com.google.dagger:dagger:$dagger_version",
+            fragment        : "androidx.fragment:fragment-ktx:$fragment_version",
+            gson          : "com.google.code.gson:gson:$gson_version",
+            gsonConverter : "com.squareup.retrofit2:converter-gson:$gson_converter_version",
+            kotlinReflect        : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
+            kotlinStdLib        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            livedata        : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
+            material        : "com.google.android.material:material:$material_version",
+            navigationFragment        : "androidx.navigation:navigation-fragment-ktx:$navigation_version",
+            navigationUi        : "androidx.navigation:navigation-ui-ktx:$navigation_version",
+            okhttp        : "com.squareup.okhttp3:okhttp:$okhttp_version",
+            loggingInterceptor        : "com.squareup.okhttp3:logging-interceptor:$okhttp_version",
+            recyclerView        : "androidx.recyclerview:recyclerview:$recyclerview_version",
+            retrofit        : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            scalarConverter        : "com.squareup.retrofit2:converter-scalars:$retrofit_version",
+            supportAppCompat        : "com.android.support:appcompat-v7:$support_appcompat_version",
+            timber        : "com.jakewharton.timber:timber:$timber_version",
+            viewmodel        : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    ].values()
+
+    kaptDependencies = [
+            dagger        : "com.google.dagger:dagger-compiler:$dagger_version",
+    ].values()
+
+    testDependencies = [
+            assertJ        : "org.assertj:assertj-core:$assertj_version",
+            coroutinesTest        : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version",
+            espresso        : "androidx.test.espresso:espresso-core:$espresso_version",
+            junit        : "androidx.test.ext:junit:$android_junit_version",
+            mockito        : "org.mockito:mockito-core:$mockito_version",
+            mockitoInline        : "org.mockito:mockito-inline:$mockito_version",
+            robolectric        : "org.robolectric:robolectric:$robolectric_version",
+            testRunner        : "androidx.test:runner:$test_runner_version",
+    ].values()
+}
+
+dependencies {
+    implementation project(':commons')
+    implementation project(':core')
+    implementation project(':feature')
+    implementation project(':intentmanager')
+
+    implementation coreDependencies
+    kapt kaptDependencies
+    testImplementation testDependencies
+}

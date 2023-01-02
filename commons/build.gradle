@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-kapt'
+
+apply from: "${rootProject.projectDir}/buildsystem/flavors.gradle"
+apply from: "${rootProject.projectDir}/buildsystem/android_commons.gradle"
+
+
+android {
+    with flavorConfig
+}
+
+ext {
+    coreDependencies = [
+            core              : "androidx.core:core-ktx:$core_ktx_version",
+            coroutines        : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
+          //  dagger        : "com.google.dagger:dagger:$dagger_version",
+            kotlinReflect        : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
+            kotlinStdLib        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            material        : "com.google.android.material:material:$material_version",
+            glide        : "com.github.bumptech.glide:glide:$glide_version",
+            glideOkHttp        : "com.github.bumptech.glide:okhttp3-integration:$glide_version",
+            livedata        : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
+            navigationFragment        : "androidx.navigation:navigation-fragment-ktx:$navigation_version",
+            viewmodel        : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+            timber        : "com.jakewharton.timber:timber:$timber_version",
+    ].values()
+
+    kaptDependencies = [
+            glide        : "com.github.bumptech.glide:compiler:$glide_version",
+    ].values()
+
+    testDependencies = [
+            assertJ        : "org.assertj:assertj-core:$assertj_version",
+            coroutinesTest        : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version",
+            junit        : "androidx.test.ext:junit:$android_junit_version",
+            mockito        : "org.mockito:mockito-core:$mockito_version",
+    ].values()
+}
+
+dependencies {
+    implementation coreDependencies
+    kapt kaptDependencies
+    testImplementation testDependencies
+}

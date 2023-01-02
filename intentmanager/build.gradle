@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply from: "${rootProject.projectDir}/buildsystem/flavors.gradle"
+apply from: "${rootProject.projectDir}/buildsystem/android_commons.gradle"
+
+android {
+    with flavorConfig
+}
+
+ext {
+    coreDependencies = [
+            coroutines        : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
+            dagger        : "com.google.dagger:dagger:$dagger_version",
+            kotlinReflect        : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
+            kotlinStdLib        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+    ].values()
+
+    kaptDependencies = [
+            dagger        : "com.google.dagger:dagger-compiler:$dagger_version",
+    ].values()
+
+    testDependencies = [
+            assertJ        : "org.assertj:assertj-core:$assertj_version",
+            coroutinesTest        : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version",
+            espresso        : "androidx.test.espresso:espresso-core:$espresso_version",
+            junit        : "androidx.test.ext:junit:$android_junit_version",
+            mockito        : "org.mockito:mockito-core:$mockito_version",
+            mockitoInline        : "org.mockito:mockito-inline:$mockito_version",
+            robolectric        : "org.robolectric:robolectric:$robolectric_version",
+            testRunner        : "androidx.test:runner:$test_runner_version",
+    ].values()
+}
+
+dependencies {
+    implementation project(':commons')
+
+    implementation coreDependencies
+    kapt kaptDependencies
+    testImplementation testDependencies
+}

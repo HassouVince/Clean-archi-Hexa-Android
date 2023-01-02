@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Margins -->
+    <dimen name="margin_1">1dp</dimen>
+    <dimen name="margin_2">2dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
+    <dimen name="margin_7">7dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+
+    <!-- Font Sizes -->
+    <dimen name="font_12">12sp</dimen>
+    <dimen name="font_14">14sp</dimen>
+    <dimen name="font_16">16sp</dimen>
+    <dimen name="font_18">18sp</dimen>
+
+    <!-- HorizontalDivider -->
+    <dimen name="horizontal_divider_standard_height">1dp</dimen>
+    <dimen name="horizontal_divider_large_height">30dp</dimen>
+    <dimen name="horizontal_divider_medium_height">10dp</dimen>
+    <dimen name="horizontal_divider_small_height">0.5dp</dimen>
+</resources>

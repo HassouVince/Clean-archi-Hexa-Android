@@ -1,0 +1,6 @@
+rootProject.name = "ConsoApp"
+include ':app'
+include ':commons'
+include ':core'
+include ':feature'
+include ':intentmanager'

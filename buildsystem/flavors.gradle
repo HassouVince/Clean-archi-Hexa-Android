@@ -1,0 +1,22 @@
+ext.flavorConfig = {
+
+    flavorDimensions "env"
+
+    productFlavors {
+        rec {
+            dimension "env"
+            resValue "string", "app_name", "Rappel conso example - rec"
+            ext.apiUrl = "\"https://data.economie.gouv.fr/api/v2/catalog/datasets/rappelconso0/\""
+        }
+
+        prod {
+            dimension "env"
+            resValue "string", "app_name", "Rappel conso example"
+            ext.apiUrl = "\"https://data.economie.gouv.fr/api/v2/catalog/datasets/rappelconso0/\""
+        }
+    }
+
+    productFlavors.all { productFlavor ->
+        buildConfigField("String","DEFAULT_API_URL", "${productFlavor.apiUrl}")
+    }
+}

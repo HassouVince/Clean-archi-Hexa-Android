@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TEXT -->
+    <style name="Title18" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/font_18</item>
+        <item name="android:textColor">?attr/colorPrimaryDark</item>
+    </style>
+
+    <style name="Content18" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/font_18</item>
+        <item name="android:textColor">?attr/colorPrimaryDark</item>
+    </style>
+
+    <style name="Content14" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">?attr/colorPrimaryDark</item>
+    </style>
+
+    <style name="Content14Bold" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">?attr/colorPrimaryDark</item>
+    </style>
+
+    <style name="Content14Italic" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_italic</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">?attr/colorPrimaryDark</item>
+    </style>
+
+    <style name="Content12Italic" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_italic</item>
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:textColor">?attr/colorPrimaryDark</item>
+    </style>
+
+    <!--Button-->
+    <style name="ButtonBold" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">25dp</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/button_text_color</item>
+        <item name="android:backgroundTint">@color/button_background_color</item>
+        <item name="android:strokeColor">@color/button_background_color</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+</resources>

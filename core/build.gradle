@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply from: "${rootProject.projectDir}/buildsystem/flavors.gradle"
+apply from: "${rootProject.projectDir}/buildsystem/android_commons.gradle"
+
+android {
+    with flavorConfig
+}
+
+ext {
+    coreDependencies = [
+            core              : "androidx.core:core-ktx:$core_ktx_version",
+            coroutines        : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
+            dagger        : "com.google.dagger:dagger:$dagger_version",
+            fragment        : "androidx.fragment:fragment-ktx:$fragment_version",
+            gson          : "com.google.code.gson:gson:$gson_version",
+            gsonConverter : "com.squareup.retrofit2:converter-gson:$gson_converter_version",
+            kotlinReflect        : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
+            kotlinStdLib        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            okhttp        : "com.squareup.okhttp3:okhttp:$okhttp_version",
+            loggingInterceptor        : "com.squareup.okhttp3:logging-interceptor:$okhttp_version",
+            retrofit        : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            scalarConverter        : "com.squareup.retrofit2:converter-scalars:$retrofit_version",
+            timber        : "com.jakewharton.timber:timber:$timber_version",
+    ].values()
+
+    kaptDependencies = [
+            dagger        : "com.google.dagger:dagger-compiler:$dagger_version",
+    ].values()
+
+    testDependencies = [
+            assertJ        : "org.assertj:assertj-core:$assertj_version",
+            coroutinesTest        : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version",
+            espresso        : "androidx.test.espresso:espresso-core:$espresso_version",
+            junit        : "androidx.test.ext:junit:$android_junit_version",
+            mockito        : "org.mockito:mockito-core:$mockito_version",
+            mockitoInline        : "org.mockito:mockito-inline:$mockito_version",
+            robolectric        : "org.robolectric:robolectric:$robolectric_version",
+            testRunner        : "androidx.test:runner:$test_runner_version",
+    ].values()
+}
+
+dependencies {
+    implementation project(':commons')
+
+    implementation coreDependencies
+    kapt kaptDependencies
+    testImplementation testDependencies
+}
